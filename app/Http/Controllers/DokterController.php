@@ -29,13 +29,18 @@ class DokterController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            $user = User::create([
-                'name' => $request->nama,
-                'phone' => $request->no_hp,
-                'password' => bcrypt($request->password),
-                'role' => 3,
-                'status' => 1
-            ]);
+            try {
+                $user = User::create([
+                    'name' => $request->nama,
+                    'phone' => $request->no_hp,
+                    'password' => bcrypt($request->password),
+                    'role' => 3,
+                    'status' => 1
+                ]);
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan user');
+            }
             $request->merge([
                 'user_id' => $user->id
             ]);
@@ -44,10 +49,10 @@ class DokterController extends Controller
             return redirect()->route('dokter')->with('sukses','Data berhasil ditambahkan');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan try');
+            return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan dokter');
         }
         DB::rollBack();
-        return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan validate');
+        return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan');
     }
 
     public function update(Request $request,$id)
