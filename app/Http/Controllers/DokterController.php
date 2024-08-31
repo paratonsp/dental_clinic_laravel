@@ -44,10 +44,10 @@ class DokterController extends Controller
             return redirect()->route('dokter')->with('sukses','Data berhasil ditambahkan');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan');
+            return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan try');
         }
         DB::rollBack();
-        return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan');
+        return redirect()->route('dokter')->with('gagal','Data gagal ditambahkan validate');
     }
 
     public function update(Request $request,$id)
