@@ -32,7 +32,6 @@ class DokterController extends Controller
             $user = User::create([
                 'name' => $request->nama,
                 'phone' => $request->no_hp,
-                'email' => 'example@email.com',
                 'password' => bcrypt($request->password),
                 'role' => 3,
                 'status' => 1
