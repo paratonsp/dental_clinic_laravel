@@ -399,24 +399,7 @@
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                              
                                 <div class="tab-pane fade" id="YearlyDiagnosa" role="tabpanel">
-                                    
-                                    <!-- @foreach ($query->diagnosaYearly() as $item)
-                                        <div class="d-flex mb-4 align-items-center">
-                                            <span class="mr-auto pr-3 font-w500 fs-30 text-black">
-                                                <svg class="mr-3" width="8" height="30" viewBox="0 0 8 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="7.65957" height="30" fill="#BDA25C"/>
-                                                </svg>
-                                                {{$item->total}}
-                                            </span>
-                                            <span>{{$item->diagnosa." "}}</span>
-                                            <span style="width: 300px" class="font-w300">{{$item->name_id}}</span>
-
-                                        </div>
-
-                                    @endforeach -->
-                                    
                                 </div>
                                 <div class="tab-pane fade show active" id="MonthlyDiagnosa" role="tabpanel">
                                     
@@ -425,22 +408,6 @@
                                             <div id="radialBar3"></div>
                                         </div>
                                         <div class="col-xl-6 col-xxl-12 col-md-6">
-                                            <!-- @foreach ($query->diagnosaBulanan() as $item)
-                                                <div class="d-flex mb-4 align-items-center">
-                                                    <span class="mr-auto pr-3 font-w500 fs-30 text-black">
-                                                        <svg class="mr-3" width="8" height="30" viewBox="0 0 8 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect width="7.65957" height="30" fill="#BDA25C"/>
-                                                        </svg>
-                                                        {{$item->total}}
-                                                    </span>
-                                                    <span>{{$item->diagnosa." "}}</span>
-                                                    <span style="width: 300px" class="font-w300">{{$item->name_id}}</span>
-
-                                                </div>
-
-                                            @endforeach -->
-                                            
-                                            
                                         </div>
                                     </div>
                                 </div>
