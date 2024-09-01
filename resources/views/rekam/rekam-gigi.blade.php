@@ -185,6 +185,7 @@
 <script defer src="{{asset('odontograma/js/plugins.js')}}"></script>
 
 {{-- <script defer src="{{asset('odontograma/js/jquery-ui-1.8.17.custom.min.js')}}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script defer src="{{asset('odontograma/js/jquery.tmpl.j')}}s"></script>
 <script defer src="{{asset('odontograma/js/knockout-2.0.0.js')}}"></script>
@@ -193,7 +194,6 @@
 {{-- <script defer src="{{asset('odontograma/js/odontograma.js')}}"></script> --}}
 <script defer src="{{asset('odontograma/js/odontogram.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     function addRekam() { 
        var element_gigi = $("#element_gigi").val();
