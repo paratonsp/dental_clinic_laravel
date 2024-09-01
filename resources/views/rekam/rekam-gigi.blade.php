@@ -67,11 +67,11 @@
 @endsection
 @section('script')
 <script>
-    var odontogram = $("#odontogram").odontogram('init', {
+    jQuery( document ).ready(function( $ ) {
+        var odontogram = $("#odontogram").odontogram('init', {
         width: "900px",
         height: "420px"
     });
-
     // $("#odontogram").data('odontogram').setGeometryByPos([
     //     { code: 'AMF', pos: '18-R' },
     //     { code: 'AMF', pos: '18-T' },
@@ -181,6 +181,7 @@
     $("#download").click(function (_, geometry) {
             console.log(geometry)
     })
+    });
 </script>
 
 @endsection
