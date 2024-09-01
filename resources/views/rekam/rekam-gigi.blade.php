@@ -58,6 +58,11 @@
 @section('header')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('odontograma/js/odontogram.js')}}"></script>
+<style type="text/css">
+        canvas {
+            border: 1px solid #a9a9a9;
+        }
+    </style>
 
 @endsection
 @section('script')
