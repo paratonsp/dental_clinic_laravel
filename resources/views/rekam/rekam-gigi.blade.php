@@ -21,7 +21,9 @@
                         
                         <tr>
                             <td align="center">
-                                <div id="odontograma"></div>
+                                <canvas id="odontogram" style="margin-top: 15px;">
+                                    Browser anda tidak support canvas, silahkan update browser anda.
+                                </canvas>
                             </td>
                         </tr>
                     </tbody>
