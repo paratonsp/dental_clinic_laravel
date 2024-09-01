@@ -15,10 +15,11 @@
                 <div class="basic-form">
                     <a href="{{Route('rekam.gigi.odontogram',$rekam->pasien_id)}}" style="width: 120px"
                         class="btn-rounded btn-info btn-xs "><i class="fa fa-eye"></i> Lihat Riwayat Odontogram</a>
-                        <br/><br/>
+                    <br/><br/>
                     <canvas id="odontogram" style="margin-top: 15px;">
                         Browser anda tidak support canvas, silahkan update browser anda.
                     </canvas>
+                    <br/><br/>
                     <button type="button" id="ODONTOGRAM_MODE_HAPUS">ODONTOGRAM_MODE_HAPUS</button>
                     <button type="button" id="ODONTOGRAM_MODE_DEFAULT">ODONTOGRAM_MODE_DEFAULT</button>
                     <button type="button" id="ODONTOGRAM_MODE_AMF">ODONTOGRAM_MODE_AMF</button>
@@ -309,11 +310,8 @@
                 }
             });
         });
-
-        
-        
      });
-</script>
+    </script>
 
 <script type="text/javascript">
     var odontogram = $("#odontogram").odontogram('init', {
