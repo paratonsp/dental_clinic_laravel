@@ -31,7 +31,7 @@ var ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_RIGHT = 26; // BOTTOM-TURN-RIGHT ARROW
 
 
 // Create closure.
-(function ($) {
+jQuery(function ($) {
     // Class Polygon
     function Polygon(vertices, options) {
         this.name = 'Polygon';
@@ -2461,4 +2461,4 @@ var ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_RIGHT = 26; // BOTTOM-TURN-RIGHT ARROW
         return arr;
     }
 
-})(jQuery);
+});
