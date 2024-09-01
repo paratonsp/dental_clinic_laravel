@@ -58,9 +58,9 @@ jQuery(function(){
 	    	value.click(function(){
 	    		var me = $(this);
 	    		var cara = me.data('cara');
-				console.log(value);
+				
 				if(!vm.tratamientoSeleccionado()){
-					alert(cara);	
+					alert('Debe seleccionar un tratamiento previamente.');
 					return false;
 				}
 
