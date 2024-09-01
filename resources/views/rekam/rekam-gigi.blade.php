@@ -16,14 +16,17 @@
                     <a href="{{Route('rekam.gigi.odontogram',$rekam->pasien_id)}}" style="width: 120px"
                         class="btn-rounded btn-info btn-xs "><i class="fa fa-eye"></i> Lihat Riwayat Odontogram</a>
                         <br/><br/>
+                    <canvas id="odontogram" style="margin-top: 15px;">
+                        Browser anda tidak support canvas, silahkan update browser anda.
+                    </canvas>
                     <table class="table" style="width: 100%">
                     <tbody>
                         
                         <tr>
                             <td align="center">
-                                <canvas id="odontogram" style="margin-top: 15px;">
+                                <!-- <canvas id="odontogram" style="margin-top: 15px;">
                                     Browser anda tidak support canvas, silahkan update browser anda.
-                                </canvas>
+                                </canvas> -->
                             </td>
                         </tr>
                     </tbody>
