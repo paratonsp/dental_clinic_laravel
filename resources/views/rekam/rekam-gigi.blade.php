@@ -2537,8 +2537,8 @@ jQuery(function ($) {
 <script>
     jQuery(document).ready(function($) {
         var odontogram = $("#odontogram").odontogram('init', {
-        width: "900px",
-        height: "420px"
+        width: "1000px",
+        height: "500px"
     });
     // $("#odontogram").data('odontogram').setGeometryByPos([
     //     { code: 'AMF', pos: '18-R' },
