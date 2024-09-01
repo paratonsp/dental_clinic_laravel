@@ -2535,10 +2535,10 @@ jQuery(function ($) {
 </script>
 
 <script>
-    jQuery( document ).ready(function( $ ) {
+    jQuery(document).ready(function($) {
         var odontogram = $("#odontogram").odontogram('init', {
-        width: "900px",
-        height: "420px"
+        width: "80vw",
+        height: "40vw"
     });
     // $("#odontogram").data('odontogram').setGeometryByPos([
     //     { code: 'AMF', pos: '18-R' },
