@@ -193,7 +193,7 @@
 {{-- <script defer src="{{asset('odontograma/js/odontograma.js')}}"></script> --}}
 <script defer src="{{asset('odontograma/js/odontogram.js')}}"></script>
 
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     function addRekam() { 
        var element_gigi = $("#element_gigi").val();
