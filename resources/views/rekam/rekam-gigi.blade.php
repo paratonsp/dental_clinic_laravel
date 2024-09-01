@@ -66,14 +66,7 @@
 
 @endsection
 @section('script')
-<script src="{{asset('odontograma/js/modernizr-2.0.6.min.js')}}"></script>
-<script defer src="{{asset('odontograma/js/plugins.js')}}"></script>
-<script defer src="{{asset('odontograma/js/jquery.tmpl.j')}}s"></script>
-<script defer src="{{asset('odontograma/js/knockout-2.0.0.js')}}"></script>
-<script defer src="{{asset('odontograma/js/jquery.svg.min.js')}}"></script>  
-<script defer src="{{asset('odontograma/js/jquery.svggraph.min.js')}}"></script>  
-
-<script type="text/javascript">
+<script>
     var odontogram = $("#odontogram").odontogram('init', {
         width: "900px",
         height: "420px"
