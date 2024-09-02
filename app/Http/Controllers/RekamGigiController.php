@@ -6,6 +6,7 @@ use App\Models\KondisiGigi;
 use App\Models\Rekam;
 use App\Models\RekamGigi;
 use App\Models\Tindakan;
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +46,7 @@ class RekamGigiController extends Controller
     public function index(Request $request,$rekamId)
     {
         $rekam = Rekam::find($rekamId);
+        $pasien = Pasien::find($rekam->pasien_id);
         $tindakan = Tindakan::where('poli','Poli Gigi')->get();
         $kondisi_gigi = KondisiGigi::all();
         $pem_gigi = RekamGigi::where('rekam_id',$rekamId)->get();
@@ -61,7 +63,7 @@ class RekamGigiController extends Controller
             }
         }
         
-        return view('rekam.rekam-gigi',compact('rekam','tindakan','kondisi_gigi','elemen_gigis','pemeriksaan_gigi','pem_gigi'));
+        return view('rekam.rekam-gigi',compact('rekam','tindakan','kondisi_gigi','elemen_gigis','pemeriksaan_gigi','pem_gigi','pasien'));
     }
 
     public function store(Request $request,$rekamId){

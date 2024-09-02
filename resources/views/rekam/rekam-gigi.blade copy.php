@@ -319,6 +319,8 @@
         height: "420px"
     });
 
+    [{code:"AMF",pos: "18-R"},{code:"BRIDGE",startVert:[{"x":"724.375","y":"226.875"},{"x":"760","y":"262.5"}],endVert:[{"x":"678.75","y":"226.875"},{"x":"714.375","y":"262.5"}]}]
+
     // $("#odontogram").data('odontogram').setGeometryByPos([
     //     { code: 'AMF', pos: '18-R' },
     //     { code: 'AMF', pos: '18-T' },

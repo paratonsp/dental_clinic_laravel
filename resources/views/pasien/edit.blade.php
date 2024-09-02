@@ -156,8 +156,7 @@
                             <label class="col-sm-2 col-form-label">Alamat Lengkap</label>
                             <div class="col-sm-10">
                             
-                                <textarea name="alamat_lengkap" class="form-control" rows="4">
-                                    {{old('alamat_lengkap') ? old('alamat_lengkap') : $data->alamat_lengkap}}</textarea>
+                                <textarea name="alamat_lengkap" class="form-control" rows="4">{{old('alamat_lengkap') ? old('alamat_lengkap') : $data->alamat_lengkap}}</textarea>
                                 @error('alamat_lengkap')
                                 <div class="invalid-feedback animated fadeInUp"
                                 style="display: block;">{{$message}}</div>
@@ -250,9 +249,18 @@
                             </div>
                             <label class="col-sm-2 col-form-label" id="no_bpjs_label">No. BPJS/KTP</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="no_bpjs"
-                                 name="no_bpjs" value="{{old('no_bpjs') ? old('no_bpjs') : $data->no_bpjs}}">
+                                <input type="number" class="form-control" id="no_bpjs" name="no_bpjs" value="{{old('no_bpjs') ? old('no_bpjs') : $data->no_bpjs}}">
                                 @error('no_bpjs')
+                                <div class="invalid-feedback animated fadeInUp"
+                                style="display: block;">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Alergi</label>
+                            <div class="col-sm-10">
+                                <textarea name="alergi" class="form-control" rows="1">{{old('alergi') ? old('alergi') : $data->alergi}}</textarea>
+                                @error('alergi')
                                 <div class="invalid-feedback animated fadeInUp"
                                 style="display: block;">{{$message}}</div>
                                 @enderror

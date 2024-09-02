@@ -117,7 +117,15 @@ class PasienController extends Controller
             ]);
         }
         return redirect()->route('pasien')->with('sukses','Data berhasil diperbaharui');
+    }
 
+    function updateOdontogram(Request $request,$id){
+        // echo("<script>console.log('odonto: " . $request->odontogram . "');</script>");
+        // echo("<script>console.log('rekamid: " . $request->rekamId . "');</script>");
+        // echo("<script>console.log('PHP: " . $id . "');</script>");
+        $data = Pasien::find($id);
+        $data->update((['odontogram'=>$request->odontogram]));
+        return redirect()->route('rekam.gigi.add',$request->rekamId)->with('sukses','Data berhasil diperbaharui');
     }
 
     function delete(Request $request,$id)

@@ -17,7 +17,7 @@
                         id="editor" 
                         class="form-control" 
                         rows="10"></textarea> --}}
-                        <div class="row">
+                        <div class="row" style="display:contents;">
                             <table class="display white-border table-responsive-sm"
                                 style="width: 100%"
                              id="icd-table">

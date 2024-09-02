@@ -9,8 +9,7 @@
             </div>
             <div class="modal-body">
                     <div class="form-group">
-                       
-                        <div class="row">
+                        <div class="row" style="display:contents;">
                             <table class="display white-border table-responsive-sm"
                                 style="width: 100%"
                              id="icd-table">

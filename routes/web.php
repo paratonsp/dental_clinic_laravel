@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/pasien/store', [PasienController::class, 'store'])->name('pasien.store');
     Route::post('/pasien/{id}/update', [PasienController::class, 'update'])->name('pasien.update');
+    Route::post('/pasien/{id}/updateOdontogram', [PasienController::class, 'updateOdontogram'])->name('pasien.updateOdontogram');
 
     Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
 
