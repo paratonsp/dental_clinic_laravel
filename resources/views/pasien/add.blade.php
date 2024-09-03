@@ -297,8 +297,6 @@
 @section('script')
 <script>
      $(function () {
-       
-
         $("#nama").change(function(){
            checkedChard();
 
@@ -313,8 +311,9 @@
         var nama_full = $("#nama").val();
         var code = $("#code").val();
         if(nama_full!="" && code!=""){
-            var firstChar = nama_full.charAt(0);
-            var awalCode = code+firstChar;
+            var removeSpace = nama_full.replace(/\s/g, '').toUpperCase();
+            var random = Math.floor(Math.random() * 999);
+            var awalCode = code+random+"-"+removeSpace;
             $("#no_rm").val(awalCode);
             $.get(
                 "{{ route('getNoRM') }}",
@@ -322,7 +321,7 @@
                     code: awalCode
                 },
                 function(data) {
-                    $("#no_rm").val(data.data + nama_full);
+                    $("#no_rm").val(data.data);
                 }
             );
         }
