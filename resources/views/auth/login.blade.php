@@ -37,7 +37,7 @@
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>No.Telp / HP</strong></label>
-                                            <input type="number" class="form-control" placeholder="phone" value="" required name="phone">
+                                            <input type="tel" class="form-control" placeholder="phone" value="" required name="phone">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
