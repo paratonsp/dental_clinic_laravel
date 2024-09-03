@@ -87,7 +87,7 @@
                             <label class="col-sm-2 col-form-label">Status Menikah</label>
                             <div class="col-sm-4">
                                
-                                <select name="status_menikah" class="form-control" required>
+                                <select name="status_menikah" class="form-control">
                                     <option value="">--Pilih--</option>
                                     <option value="Belum Menikah">Belum Menikah</option>
                                     <option value="Menikah">Menikah</option>
