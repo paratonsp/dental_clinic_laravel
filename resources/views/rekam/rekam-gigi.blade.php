@@ -3020,8 +3020,7 @@
         link.download = 'Odontogram - '+'<?php echo $rekam->pasien->nama; ?>' + '.png';
         link.href = $("#odontogram").odontogram('getDataURL');
         link.click();
-
-        })
+    })
 });
 </script>
 
