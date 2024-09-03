@@ -77,7 +77,6 @@ class PasienController extends Controller
             'cara_bayar' => 'required',
             'jk' => 'required',
             'no_rm' => 'required|unique:pasien',
-            'no_bpjs' => 'unique:pasien'
         ]);
 
         $pasien = Pasien::create($request->all());

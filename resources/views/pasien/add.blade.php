@@ -322,7 +322,7 @@
                     code: awalCode
                 },
                 function(data) {
-                    $("#no_rm").val(data.data);
+                    $("#no_rm").val(data.data + nama_full);
                 }
             );
         }
