@@ -39,8 +39,9 @@ class RekamGigiController extends Controller
         }
         // dd($elemen_gigis);
         // $all_riwayat_gigi = RekamGigi::where('pasien_id',$pasienId)->get();
+        $pasien = Pasien::find($pasienId);
         
-        return view('rekam.odontogram',compact('rekam','elemen_gigis','pemeriksaan_gigi','all_riwayat_gigi'));
+        return view('rekam.odontogram',compact('rekam','elemen_gigis','pemeriksaan_gigi','all_riwayat_gigi','pasien'));
     }
 
     public function index(Request $request,$rekamId)

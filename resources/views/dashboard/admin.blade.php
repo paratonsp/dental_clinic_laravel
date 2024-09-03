@@ -5,7 +5,7 @@
     <div class="form-head d-flex align-items-center mb-sm-4 mb-3">
         <div class="mr-auto">
             <h2 class="text-black font-w600">Dashboard</h2>
-            <p class="mb-0">Klinik Medishina Admin Dashboard</p>
+            <p class="mb-0">Admin Dashboard</p>
         </div>
     </div>
     <div class="row">
@@ -366,50 +366,6 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="col-xl-12">	
-                    <div class="card " >
-                        <div class="card-header d-sm-flex d-block pb-0 border-0 ">
-                            <div class="mr-auto pr-3">
-                                <h4 class="text-black fs-20 mb-0">Top Diagnosa </h4>
-                            </div>
-                            <div class="card-action card-tabs mt-3 mt-sm-0 mt-3 mb-sm-0 mb-3 mt-sm-0">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    
-                                    
-                                    <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#MonthlyDiagnosa" role="tab">
-                                            Monthly
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#YearlyDiagnosa" role="tab">
-                                            Yearly
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="tab-pane fade" id="YearlyDiagnosa" role="tabpanel">
-                                </div>
-                                <div class="tab-pane fade show active" id="MonthlyDiagnosa" role="tabpanel">
-                                    
-                                    <div class="row align-items-center">
-                                        <div class="col-xl-6 col-xxl-12 col-md-6">
-                                            <div id="radialBar3"></div>
-                                        </div>
-                                        <div class="col-xl-6 col-xxl-12 col-md-6">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

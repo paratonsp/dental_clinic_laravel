@@ -2900,90 +2900,6 @@
 </script>
 
 <script>
-    function addRekam() { 
-       var element_gigi = $("#element_gigi").val();
-       var tindakan = $("#tindakan").val();
-       var diagnosa = $("#diagnosa").val()
-       var kondisi_gigi = $("#kondisi_gigi").val();
-
-       if(kondisi_gigi=="" || tindakan=="" || diagnosa==""){
-            alert("Form Wajib Dipilih")
-       }else{
-            
-            var markup = '<tr>'+
-                    '<td>'+element_gigi+
-                        '<input type="hidden" name="element_gigi[]" value="'+element_gigi+'"/>'+
-                    '</td>'+
-                    '<td>'+kondisi_gigi+
-                        '<input type="hidden" name="pemeriksaan[]" value="'+kondisi_gigi+'"/>'+
-                    '</td>'+
-                    '<td>'+diagnosa+
-                        '<input type="hidden" name="diagnosa[]" value="'+diagnosa+'"/>'+
-                    '</td>'+
-                    '<td>'+tindakan+
-                        '<input type="hidden" name="tindakan[]" value="'+tindakan+'"/>'+
-                    '</td>'+
-                    
-                    '<td style="width: 80px">'+
-                        // '<button type="button" class="btn btn-danger btnDelete">Hapus</button>'+
-                        '<a href="#" class="btn btn-danger shadow btn-xs sharp btnDelete"><i class="fa fa-trash"></i></a>'+
-                    '</td>'+
-                    '</tr>';
-
-             $("#table-tindakan tbody").append(markup);
-       }
-       
-     }
-     $(function () {
-        var table = $('#icd-table').DataTable({
-            processing: true,
-            serverSide: true,
-            searching: true,
-            paging:true,
-            select: false,
-            pageLength: 5,
-            lengthChange:false ,
-            ajax: "{{ route('icd.data') }}",
-            columns: [
-                {data: 'action', name: 'action'},
-                {data: 'code', name: 'code'},
-                {data: 'name_id', name: 'name_id'}
-            ]
-        });
-
-        $(document).on("click", ".pilihIcd", function () {
-            var diagnosa_id = $(this).data('id');
-            var rekam_id = $("#rekam_id").val();
-            var pasien_id = $("#pasien_id").val();
-            var token = '{{csrf_token()}}';
-            $("#diagnosa").val(diagnosa_id);
-            $("#addDiagnosa").modal('hide');            
-        });
-
-        $(".delete").click(function() {
-                var id = $(this).attr('r-id');
-                var name = $(this).attr('r-name');
-                var link = $(this).attr('r-link');
-
-                Swal.fire({
-                title: 'Ingin Menghapus?',
-                text: "Yakin ingin menghapus data  : "+name+" ini ?" ,
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, hapus !'
-            }).then((result) => {
-                console.log(result);
-                if (result.value) {
-                    window.location = link;
-                }
-            });
-        });
-     });
-</script>
-
-<script>
     jQuery(document).ready(function($) {
         var odontogram = $("#odontogram").odontogram('init', {
         width: "800px",
@@ -3103,4 +3019,87 @@
     });
 </script>
 
+<script>
+    function addRekam() { 
+       var element_gigi = $("#element_gigi").val();
+       var tindakan = $("#tindakan").val();
+       var diagnosa = $("#diagnosa").val()
+       var kondisi_gigi = $("#kondisi_gigi").val();
+
+       if(kondisi_gigi=="" || tindakan=="" || diagnosa==""){
+            alert("Form Wajib Dipilih")
+       }else{
+            
+            var markup = '<tr>'+
+                    '<td>'+element_gigi+
+                        '<input type="hidden" name="element_gigi[]" value="'+element_gigi+'"/>'+
+                    '</td>'+
+                    '<td>'+kondisi_gigi+
+                        '<input type="hidden" name="pemeriksaan[]" value="'+kondisi_gigi+'"/>'+
+                    '</td>'+
+                    '<td>'+diagnosa+
+                        '<input type="hidden" name="diagnosa[]" value="'+diagnosa+'"/>'+
+                    '</td>'+
+                    '<td>'+tindakan+
+                        '<input type="hidden" name="tindakan[]" value="'+tindakan+'"/>'+
+                    '</td>'+
+                    
+                    '<td style="width: 80px">'+
+                        // '<button type="button" class="btn btn-danger btnDelete">Hapus</button>'+
+                        '<a href="#" class="btn btn-danger shadow btn-xs sharp btnDelete"><i class="fa fa-trash"></i></a>'+
+                    '</td>'+
+                    '</tr>';
+
+             $("#table-tindakan tbody").append(markup);
+       }
+       
+     }
+     $(function () {
+        var table = $('#icd-table').DataTable({
+            processing: true,
+            serverSide: true,
+            searching: true,
+            paging:true,
+            select: false,
+            pageLength: 5,
+            lengthChange:false ,
+            ajax: "{{ route('icd.data') }}",
+            columns: [
+                {data: 'action', name: 'action'},
+                {data: 'code', name: 'code'},
+                {data: 'name_id', name: 'name_id'}
+            ]
+        });
+
+        $(document).on("click", ".pilihIcd", function () {
+            var diagnosa_id = $(this).data('id');
+            var rekam_id = $("#rekam_id").val();
+            var pasien_id = $("#pasien_id").val();
+            var token = '{{csrf_token()}}';
+            $("#diagnosa").val(diagnosa_id);
+            $("#addDiagnosa").modal('hide');            
+        });
+
+        $(".delete").click(function() {
+                var id = $(this).attr('r-id');
+                var name = $(this).attr('r-name');
+                var link = $(this).attr('r-link');
+
+                Swal.fire({
+                title: 'Ingin Menghapus?',
+                text: "Yakin ingin menghapus data  : "+name+" ini ?" ,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, hapus !'
+            }).then((result) => {
+                console.log(result);
+                if (result.value) {
+                    window.location = link;
+                }
+            });
+        });
+     });
+</script>
 @endsection

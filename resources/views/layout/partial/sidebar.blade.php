@@ -72,7 +72,7 @@
         </ul>
         
         <div class="copyright">
-            <p><strong>Klinik Medishina</strong> © 2023 All Rights Reserved</p>
+            <p><strong>Dental Clinic</strong> © All Rights Reserved</p>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Klinik Medishina</title>
+    <title>Dental Clinic</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -25,10 +25,10 @@
                                 <div class="auth-form">
 									<div class="text-center mb-3">
 										{{-- <a href="#">
-                                            <h2 class="text-white">Klinik Medishina</h2>
+                                            <h2 class="text-white">Dental CLinic</h2>
                                         </a> --}}
-                                        <img class="logo-abbr" src="{{asset('images/logo.png')}}" alt="">
-                                        <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt=""> 
+                                        <img class="logo-abbr" src="{{asset('images/transparent-icon.png')}}" alt="" style="max-width: 100px;">
+                                        <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt="" style="max-width: 200px;"> 
                 
 									</div>
                                     {{-- <h4 class="text-center mb-4 text-white">Sign in your account</h4> --}}
