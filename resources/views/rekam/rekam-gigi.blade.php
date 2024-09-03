@@ -16,10 +16,10 @@
                     <a href="{{Route('rekam.gigi.odontogram',$rekam->pasien_id)}}" style="width: 120px"
                         class="btn-rounded btn-info btn-xs "><i class="fa fa-eye"></i> Lihat Riwayat Odontogram</a>
                     <br/><br/>
-                    <table class="table" style="width: 100%">
+                    <table class="table" style="width: 100%; table-layout: fixed;">
                         <tbody>
                             <tr>
-                                <td align="center">
+                                <td align="center" style="overflow: scroll;">
                                     <canvas id="odontogram">
                                         Browser anda tidak support canvas, silahkan update browser anda.
                                     </canvas>
@@ -69,7 +69,7 @@
 
                     <button type="button" class="btn btn-dark" id="ODONTOGRAM_MODE_DEFAULT">Default</button>
                     <button type="button" class="btn btn-dark" id="ODONTOGRAM_MODE_HAPUS">Hapus</button>
-                    <!-- <button type="button" class="btn btn-dark" id="download">Download</button> -->
+                    <button type="button" class="btn btn-dark" id="download">Download</button>
                     <br>
                     <form action="{{Route('pasien.updateOdontogram',$rekam->pasien_id)}}" method="POST">
                         {{ csrf_field() }}
@@ -1427,6 +1427,8 @@
             var ctx = this.context;
 
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
             var width = ctx.canvas.width;
             var height = ctx.canvas.height;
@@ -2052,7 +2054,7 @@
         }
 
         Odontogram.prototype.getDataURL = function () {
-            return this.canvas.toDataURL();
+            return this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
         }
 
         $.fn.odontogram = function (mode, arg1, arg2, arg3, arg4) {
@@ -3014,9 +3016,13 @@
     })
 
     $("#download").click(function (_, geometry) {
-            console.log(geometry)
-    })
-    });
+        var link = document.createElement('a');
+        link.download = 'Odontogram - '+'<?php echo $rekam->pasien->nama; ?>' + '.png';
+        link.href = $("#odontogram").odontogram('getDataURL');
+        link.click();
+
+        })
+});
 </script>
 
 <script>

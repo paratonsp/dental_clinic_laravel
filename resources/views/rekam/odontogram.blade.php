@@ -12,63 +12,53 @@
         <div class="card">
             <div class="card-body">
                 <div class="basic-form">
-                    <table class="table" style="width: 100%">
+                <table class="table" style="width: 100%; table-layout: fixed;">
                     <tbody>
-                        <tr>
-                            <td align="center">
+                         <tr>
+                            <td align="center" style="overflow: scroll;">
                                 <canvas id="odontogram">
                                     Browser anda tidak support canvas, silahkan update browser anda.
                                 </canvas>
                             </td>
                         </tr>
                     </tbody>
-                    </table>
-                        <hr>
-                        <div class="row">
-                            <div class="card-body pt-3">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive card-table">
-                                            <h5>Riwayat Pemeriksaan Gigi</h5>
-                                                <table  id="table-tindakan"
-                                                class="table table-responsive-md table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Tanggal</th>
-                                                        <th>Keluhan</th>
-                                                        <th>Elemen Gigi</th>
-                                                        <th>Kondisi Gigi</th>
-                                                        <th>Diagnosa</th>
-                                                        <th>Tindakan</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($all_riwayat_gigi as $row)
-                                                        <tr>
-                                                            <td>{{$row->rekam->tgl_rekam}}</td>
-                                                            <td>{{$row->rekam->keluhan}}</td>
-                                                            <td>{{$row->elemen_gigi}}</td>
-                                                            <td>{{$row->pemeriksaan}}</td>
-                                                            <td>{{$row->diagnosa}}</td>
-                                                            <td>{{$row->tindakan}}</td>
-                                                           
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                                
-                                            </table>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                      
-
-                        
+                 </table>
+                 <button type="button" class="btn btn-dark" id="download">Download</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="table-responsive card-table"> 
+            <h5>Riwayat Pemeriksaan Gigi</h5>
+            <br>
+            <table id="riwayatTable" class="table table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Keluhan</th>
+                        <th>Elemen Gigi</th>
+                        <th>Kondisi Gigi</th>
+                        <th>Diagnosa</th>
+                        <th>Tindakan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($all_riwayat_gigi as $row)
+                        <tr>
+                            <td>{{$row->rekam->tgl_rekam}}</td>
+                            <td>{{$row->rekam->keluhan}}</td>
+                            <td>{{$row->elemen_gigi}}</td>
+                            <td>{{$row->pemeriksaan}}</td>
+                            <td>{{$row->diagnosa}}</td>
+                            <td>{{$row->tindakan}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -1365,6 +1355,8 @@
             var ctx = this.context;
 
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
             var width = ctx.canvas.width;
             var height = ctx.canvas.height;
@@ -1990,7 +1982,7 @@
         }
 
         Odontogram.prototype.getDataURL = function () {
-            return this.canvas.toDataURL();
+            return this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
         }
 
         $.fn.odontogram = function (mode, arg1, arg2, arg3, arg4) {
@@ -2954,8 +2946,11 @@
     })
 
     $("#download").click(function (_, geometry) {
-            console.log(geometry)
+        var link = document.createElement('a');
+        link.download = 'Odontogram - '+'<?php echo $rekam->pasien->nama; ?>' + '.png';
+        link.href = $("#odontogram").odontogram('getDataURL');
+        link.click();
     })
-    });
+});
 </script>
 @endsection
