@@ -1429,6 +1429,7 @@
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clears the canvas
             ctx.fillStyle = 'white';
             ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.fillStyle = 'black';
 
             var width = ctx.canvas.width;
             var height = ctx.canvas.height;
