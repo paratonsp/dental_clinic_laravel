@@ -39,6 +39,7 @@
                     </a>
                 </li>
             @endif
+            @endif
             @if (auth()->user()->role_display()=='Admin')
                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-notepad"></i>

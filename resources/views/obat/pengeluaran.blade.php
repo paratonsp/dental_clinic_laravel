@@ -58,9 +58,9 @@
 {{-- DATA --}}
     <div class="row">
        
-        <div class="col-xl-3 col-xxl-12">
+        <div class="col-xl-12 col-xxl-12">
             <div class="row">
-                <div class="col-xl-12 col-xxl-5 col-lg-5">
+                <div class="col-xl-12 col-xxl-12 col-lg-12">
                     <div class="card">
                         <div class="card-header border-0 pb-0">
                             <h4 class="fs-20 text-black mb-0">Detail Pasien</h4>
