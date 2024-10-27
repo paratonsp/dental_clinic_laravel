@@ -39,12 +39,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/poliklinik/{id}/delete', [PoliController::class, 'delete'])->name('poli.delete');
 
     Route::get('/getDokter', [DokterController::class, 'getDokter'])->name('getDokter');
+    Route::get('/getJadwalDokter', [DokterController::class, 'getJadwalDokter'])->name('getJadwalDokter');
 
     Route::get('/dokter', [DokterController::class, 'index'])->name('dokter');
     Route::post('/dokter/store', [DokterController::class, 'store'])->name('dokter.store');
     Route::post('/dokter/{id}/update', [DokterController::class, 'update'])->name('dokter.update');
     Route::get('/dokter/{id}/delete', [DokterController::class, 'delete'])->name('dokter.delete');
     Route::post('/dokter/{id}/gantipassword', [DokterController::class, 'updatepassword'])->name('dokter.gantipassword');
+    Route::get('/dokter/jadwal/{id}', [DokterController::class, 'jadwal'])->name('dokter.jadwal');
 
     Route::post('/gantipassword/{id}', [AuthController::class, 'updatepassword'])->name('gantipassword');
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas');
@@ -66,6 +68,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/pasien/{id}/updateOdontogram', [PasienController::class, 'updateOdontogram'])->name('pasien.updateOdontogram');
 
     Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
+    Route::get('/pembayaran/{id}', [PembayaranController::class, 'detail'])->name('pembayaran.detail');
+    Route::post('/pembayaran/{id}/update', [PembayaranController::class, 'update'])->name('pembayaran.update');
+
 
     Route::get('/obat/json', [ObatController::class, 'data'])->name('obat.data');
     Route::get('/obat', [ObatController::class, 'index'])->name('obat');

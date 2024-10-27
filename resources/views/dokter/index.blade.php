@@ -85,7 +85,6 @@
             <div class="card-body">
                 <div class="form-group col-lg-6" style="float: left">
                     <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Dokter</a>
-
                 </div>
                 <div class="form-group col-lg-6" style="float: right">
                     <form method="get" action="{{ url()->current() }}">
@@ -105,7 +104,6 @@
                     <table  class="table table-responsive-md">
                         <thead>
                             <tr>
-                                
                                 <th>No</th>
                                 <th>NIP</th>
                                 <th>Nama Dokter</th>
@@ -130,9 +128,8 @@
                                     <td>{{$row->status_display()}}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#key{{$row->user_id}}" 
-                                                class="btn btn-warning shadow btn-xs sharp mr-1"><i class="fa fa-key"></i></a>
-
+                                            <a href="{{Route('dokter.jadwal',$row->id)}}" class="btn btn-secondary shadow btn-xs sharp mr-1"><i class="fa fa-clock-o"></i></a>
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#key{{$row->user_id}}" class="btn btn-warning shadow btn-xs sharp mr-1"><i class="fa fa-key"></i></a>
                                             <a href="javascript:void(0)" data-toggle="modal" data-target="#edit{{$row->id}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                             <a href="#" class="btn btn-danger shadow btn-xs sharp delete" r-link="{{Route('dokter.delete',$row->id)}}"
                                              r-name="{{$row->nama}}" r-id="{{$row->id}}"><i class="fa fa-trash"></i></a>

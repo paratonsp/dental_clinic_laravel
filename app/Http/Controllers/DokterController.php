@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokter;
+use App\Models\JadwalDokter;
+use App\Models\LiburDokter;
 use App\Models\Poli;
 use App\Models\Rekam;
+use App\Models\Jam;
+use App\Models\Hari;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -110,6 +114,48 @@ class DokterController extends Controller
         return response()->json([ 'success' => true,'data' => $data],200);
     }
 
+    public function getJadwalDokter(Request $request)
+    {
+        $hari = Carbon::parse($request->get('tgl_rekam'))->locale('id')->dayName;
+        $data = JadwalDokter::where('dokter_id',$request->get('dokter_id'))
+                ->where('hari',$hari)
+                ->get();
+
+        $libur = LiburDokter::where('dokter_id',$request->get('dokter_id'))
+                ->where('tanggal',$request->get('tgl_rekam'))
+                ->get();
+        
+        if ($libur) {
+            foreach ($libur as $key => $valueL) {
+                if ($valueL->jam == "0") {
+                    $data = array();
+                } else {
+                    foreach ($data as $key => $valueD) {
+                        if ($valueD->jam == $valueL->jam) {
+                            unset($data[$key]);
+                        }
+                    }
+                }
+            }
+        }
+
+        $rekam = Rekam::where('dokter_id',$request->get('dokter_id'))
+                ->where('tgl_rekam',$request->get('tgl_rekam'))
+                ->get();
+        
+        if ($rekam) {
+            foreach ($rekam as $key => $valueR) {
+                foreach ($data as $key => $valueD) {
+                    if ($valueD->jam == $valueR->jam_rekam) {
+                        unset($data[$key]);
+                    }
+                }
+            }
+        }
+        
+        return response()->json([ 'success' => true,'data' => $data],200);
+    }
+
     public function updatepassword(Request $request, $id)
     {
         $this->validate($request,[
@@ -121,5 +167,16 @@ class DokterController extends Controller
         User::where('id', $id)->update(['password' => $password,
         'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')]);
         return redirect()->route('dokter')->with('sukses','Selamat, password anda sudah diperbaharui');
+    }
+
+    public function jadwal(Request $request, $id)
+    {
+        $data = Dokter::find($id);
+        $jam = Jam::all();
+        $hari = Hari::all();
+        $libur = LiburDokter::where('dokter_id',$id)
+                ->whereDate('tanggal', '>', Carbon::today()->toDateString())
+                ->get();
+        return view('dokter.jadwal',compact('data','jam','hari','libur'));
     }
 }

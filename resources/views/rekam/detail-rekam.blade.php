@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                    
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex mb-3 align-items-center">
                                         <span class="fs-12 col-6 p-0 text-black">
                                             <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <rect width="19" height="19" fill="#5FBF91"/>
@@ -156,7 +156,7 @@
                             @endif
                         @elseif ($rekamLatest->status==2)
                            @if (auth()->user()->role_display()=="Admin" || auth()->user()->role_display()=="Dokter")
-                                <a href="{{Route('rekam.status',[$rekamLatest->id,3])}}" class="btn btn-primary">
+                                <a href="{{Route('rekam.status',[$rekamLatest->id,4])}}" class="btn btn-primary">
                                     Selesaikan Pemeriksaan & Perawatan
                                     <span class="btn-icon-right"><i class="fa fa-check"></i></span>
                                 </a>

@@ -35,8 +35,6 @@
                                 <th>No BPJS/KTP</th>
                             </tr>
                         </thead>
-                        
-                        
                     </table>
                 </div>
             </div>
@@ -53,10 +51,47 @@
                     <form action="{{Route('rekam.store')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Poli Tujuan*</label>
+                            <div class="col-sm-4">
+                                <select name="poli" id="poli" class="form-control" required>
+                                    <option value="">--Pilih Poli--</option>
+                                    @foreach ($poli as $item)
+                                        @if (old('poli') == $item->nama)
+                                            <option value="{{$item->nama}}" selected>{{$item->nama}}</option>
+                                        @else 
+                                            <option value="{{$item->nama}}">{{$item->nama}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('poli')
+                                <div class="invalid-feedback animated fadeInUp"
+                                style="display: block;">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <label class="col-sm-2 col-form-label">Pilih Dokter*</label>
+                            <div class="col-sm-4">
+                                <select name="dokter_id" id="dokter_id" class="form-control">
+                                </select>
+                                @error('dokter_id')
+                                <div class="invalid-feedback animated fadeInUp"
+                                style="display: block;">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tanggal Periksa*</label>
                             <div class="col-sm-4">
-                                <input type="date" name="tgl_rekam" class="form-control" value="{{date('Y-m-d')}}">
+                                <input type="date" name="tgl_rekam" id="tgl_rekam" class="form-control" value="{{date('Y-m-d')}}">
                                 @error('tgl_rekam')
+                                <div class="invalid-feedback animated fadeInUp"
+                                style="display: block;">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <label class="col-sm-2 col-form-label">Jam Periksa*</label>
+                            <div class="col-sm-4">
+                                <select name="jam_rekam" id="jam_rekam" class="form-control">
+                                </select>
+                                @error('jam_rekam')
                                 <div class="invalid-feedback animated fadeInUp"
                                 style="display: block;">{{$message}}</div>
                                 @enderror
@@ -64,7 +99,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Pasien*</label>
-                            <div class="col-sm-5 ">
+                            <div class="col-sm-4 ">
                                 <input type="hidden" class="form-control " id="pasien_id"
                                 name="pasien_id" value="{{old('pasien_id')}}">
                                 <div class="input-group transparent-append">
@@ -83,7 +118,7 @@
                                 @enderror
                             </div>
                             <label class="col-sm-2 col-form-label">Cara Bayar*</label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4 ">
                                 <select name="cara_bayar" id="cara_bayar" required class="form-control">
                                     <option value=""></option>
                                     <option value="Umum/Mandiri" {{old('cara_bayar')=="Umum/Mandiri" ? 'selected' : ''}}>Umum/Mandiri</option>
@@ -124,40 +159,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Poli Tujuan*</label>
-                            <div class="col-sm-4">
-                                <select name="poli" id="poli" class="form-control" required>
-                                    <option value="">--Pilih Poli--</option>
-                                    @foreach ($poli as $item)
-                                        @if (old('poli') == $item->nama)
-                                            <option value="{{$item->nama}}" selected>{{$item->nama}}</option>
-
-                                        @else 
-                                            <option value="{{$item->nama}}">{{$item->nama}}</option>
-
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @error('poli')
-                                <div class="invalid-feedback animated fadeInUp"
-                                style="display: block;">{{$message}}</div>
-                                @enderror
-                            </div>
-
-                            <label class="col-sm-2 col-form-label">Pilih Dokter*</label>
-                            <div class="col-sm-4">
-                                <select name="dokter_id" id="dokter_id" class="form-control">
-                                  
-                                </select>
-                                @error('dokter_id')
-                                <div class="invalid-feedback animated fadeInUp"
-                                style="display: block;">{{$message}}</div>
-                                @enderror
-                            </div>
-                        </div>
-                       
                         <hr>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
@@ -196,6 +197,7 @@
         
     });
     $( document ).ready(function() {
+
         $("#poli").change(function(e) {
             var poli = $("#poli").val();
             if (poli == '') return false;
@@ -210,10 +212,42 @@
                         string = string + `<option value="` + value.id + `">` + value.nama + `</option>`;
                     })
                     $("#dokter_id").html(string);
-
+                    updateJam();
                 }
             );
          });
+
+         $("#tgl_rekam").change(function(e) {
+            updateJam();
+         });
+
+         $("#dokter_id").change(function(e) {
+            updateJam();
+         });
+
+         function updateJam() {
+            var dokter_id = $("#dokter_id").val();
+            var tgl_rekam = $("#tgl_rekam").val();
+            if (dokter_id == '' || tgl_rekam == '') return false;
+            $.get(
+                "{{ route('getJadwalDokter') }}",
+                {
+                    dokter_id: dokter_id,
+                    tgl_rekam: tgl_rekam
+                },
+                function(data) {
+                    var string = '';
+                    if (data.data.length ===0) {
+                        string = `<option value="">Not Available</option> readonly`
+                    } else {
+                        $.each(data.data, function(index, value) {
+                            string = string + `<option value="` + value.jam + `">` + value.jam + `</option>`;
+                        })
+                    }
+                    $("#jam_rekam").html(string);
+                }
+            );
+         }
     });
      $(document).on("click", ".pilihPasien", function () {
         var id = $(this).data('id');

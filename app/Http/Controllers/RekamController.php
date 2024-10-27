@@ -16,7 +16,6 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Notification as Notification;
 
 class RekamController extends Controller
@@ -43,17 +42,7 @@ class RekamController extends Controller
                             $query->where('dokter_id', '=', $dokterId);
                         }
                     })
-                    ->when($request->tab, function ($query) use ($request) {
-                        if(auth()->user()->role_display()=="Dokter" && $request->tab==5){
-                            $query->whereIn('status', [3,4,5]);
-                        }else{
-                            if($request->tab==5){
-                                $query->whereIn('status',[4,5]);
-                            }else{
-                                $query->where('status', '=', "$request->tab");
-                            }
-                        }
-                    })
+                    ->whereIn('status', [1,2,3,4,5])
                     ->paginate(10);
         return view('rekam.index',compact('rekams'));
     }
@@ -103,6 +92,7 @@ class RekamController extends Controller
     function store(Request $request){
         $this->validate($request,[
             'tgl_rekam' => 'required',
+            'jam_rekam' => 'required',
             'pasien_id' => 'required',
             'pasien_nama' => 'required',
             'keluhan' => 'required',
@@ -123,12 +113,7 @@ class RekamController extends Controller
                                 ->withErrors(['pasien_id' => 'Pasien ini masih belum selesai periksa,
                                  harap selesaikan pemeriksaan sebelumnya']);
         }
-        // $dokter = Dokter::where('poli',$request->poli)->first();
-        // if($dokter){
-        //     $request->merge([
-        //         'dokter_id' => $dokter->id
-        //     ]);
-        // }
+
         $request->merge([
             'no_rekam' => "REG#".date('Ymd').$request->pasien_id,
             'petugas_id' => auth()->user()->id
@@ -143,6 +128,7 @@ class RekamController extends Controller
     function update(Request $request,$id){
         $this->validate($request,[
             'tgl_rekam' => 'required',
+            'jam_rekam' => 'required',
             'pasien_id' => 'required',
             'pasien_nama' => 'required',
             'keluhan' => 'required',

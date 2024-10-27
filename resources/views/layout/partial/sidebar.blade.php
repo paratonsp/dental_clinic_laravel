@@ -32,27 +32,13 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->role_display()=='Admin' || auth()->user()->role_display()=='Apotek')
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-battery"></i>
-                        <span class="nav-text">Apotek</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{Route('obat')}}">Data Obat</a></li>
-                        <li><a href="{{Route('obat.resep')}}">Resep & Pemberian Obat</a></li>
-                        <li><a href="{{Route('obat.riwayat')}}">Riwayat Keluar Obat</a></li>
-
-                    </ul>
-                </li>
-              
-            @endif
-            {{-- @if (auth()->user()->role_display()=='Pendaftaran' || auth()->user()->role_display()=="Admin")
+            @if (auth()->user()->role_display()=='Pendaftaran' || auth()->user()->role_display()=="Admin")
                 <li><a href="{{Route('pembayaran')}}" class="ai-icon" aria-expanded="false">
                         <i class="flaticon-381-diamond"></i>
                         <span class="nav-text">Pembayaran</span>
                     </a>
                 </li>
-            @endif --}}
+            @endif
             @if (auth()->user()->role_display()=='Admin')
                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-notepad"></i>

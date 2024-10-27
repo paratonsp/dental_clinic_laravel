@@ -6,9 +6,6 @@
         <div class="card">
             <div class="card-body">
                 <ul class="nav nav-tabs" >
-                    <div class="form-group col-lg-6" style="float: left">
-                        <a href="{{Route('rekam.add')}}" class="btn btn-primary mr-3">+Rekam Medis Baru</a>    
-                    </div>
                     <div class="form-group col-lg-6" style="float: right">
                         <form method="get" action="{{ url()->current() }}">
                             <div class="input-group">
@@ -21,7 +18,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div>                    
+
+                    </div>
                 </ul>
 
                 <div class="table-responsive card-table"> 
@@ -32,36 +30,28 @@
                                 <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Nama Pasien</th>
-                                <th>Poli &<br>Dokter</th>
-                                <th>Keluhan </th>
+                                <th>Poli & Dokter</th>
                                 <th>Cara Bayar</th>
+                                <th>Biaya</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($rekams as $key=>$row)
+                            @foreach ($pembayaran as $key=>$row)
                                 <tr>
-                                    <td align="center">{{ $rekams->firstItem() + $key }}</td>
+                                    <td align="center">{{ $pembayaran->firstItem() + $key }}</td>
                                 <td>{{$row->no_rekam}}<br/>{{$row->tgl_rekam}}</td>
                                 <td><a href="{{Route('rekam.detail',$row->pasien_id)}}">{{$row->pasien->nama}}</a></td>
                                 <td>{{$row->poli}}
                                     <br><strong>{{$row->dokter->nama}}</strong>
                                 </td>
-                                <td>{{$row->keluhan}}</td>
                                 <td>{{$row->cara_bayar}}</td>
+                                <td>{{$row->total_biaya}}</td>
                                 <td>{!!$row->status_display()!!}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{Route('rekam.detail',$row->pasien_id)}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-user-md"></i></a>
-                                        @if (auth()->user()->role_display()=="Admin" && $row->status==2)
-                                             <a href="{{Route('rekam.edit',$row->id)}}"  class="btn btn-info shadow btn-xs sharp mr-1">
-                                            <i class="fa fa-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger shadow btn-xs sharp delete" r-link="{{Route('rekam.delete',$row->id)}}"
-                                         r-name="{{$row->pasien->nama}}" r-id="{{$row->id}}"><i class="fa fa-trash"></i></a>
-                                        @endif
-
-                                       
+                                        <a href="{{Route('pembayaran.detail',$row->id)}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-user-md"></i></a>
                                     </div>
                                 </td>
                                 </tr>
@@ -69,7 +59,7 @@
                         </tbody>
                         
                     </table>
-                    {{ $rekams->appends(request()->except('page'))->links() }}
+                    {{ $pembayaran->appends(request()->except('page'))->links() }}
 
                 </div>
 
