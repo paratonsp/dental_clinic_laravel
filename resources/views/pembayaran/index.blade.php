@@ -41,7 +41,7 @@
                             @foreach ($pembayaran as $key=>$row)
                                 <tr>
                                     <td align="center">{{ $pembayaran->firstItem() + $key }}</td>
-                                <td>{{$row->no_rekam}}<br/>{{$row->tgl_rekam}}</td>
+                                <td>{{$row->no_rekam}}<br/>{{$row->tgl_rekam}} {{$row->jam_rekam}}</td>
                                 <td><a href="{{Route('rekam.detail',$row->pasien_id)}}">{{$row->pasien->nama}}</a></td>
                                 <td>{{$row->poli}}
                                     <br><strong>{{$row->dokter->nama}}</strong>

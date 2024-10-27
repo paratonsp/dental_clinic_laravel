@@ -161,21 +161,6 @@
                                     <span class="btn-icon-right"><i class="fa fa-check"></i></span>
                                 </a>
                            @endif
-                        @elseif ($rekamLatest->status==4)
-                           @if (auth()->user()->role_display()=="Admin" || auth()->user()->role_display()=="Pendaftaran")
-                                <a href="{{Route('rekam.status',[$rekamLatest->id,5])}}" class="btn btn-primary">
-                                    Selesaikan Pembayaran & Rekam Medis ini
-                                    <span class="btn-icon-right"><i class="fa fa-check"></i></span>
-                                </a>
-                           @endif
-                        @elseif ($rekamLatest->status==3)
-                           @if (auth()->user()->role_display()=="Admin")
-                                <a href="{{Route('rekam.status',[$rekamLatest->id,5])}}" class="btn btn-primary">
-                                    Selesaikan Rekam Medis Ini
-                                    <span class="btn-icon-right"><i class="fa fa-check"></i></span>
-                                </a>
-                           @endif
-                       
                         @endif
                     @endif
                     
@@ -230,7 +215,7 @@
                                 @foreach ($rekams as $key=>$row)
                                     <tr>
                                         <td>{{ $rekams->firstItem() + $key }}</td>
-                                    <td>{{$row->tgl_rekam}}</td>
+                                    <td>{{$row->tgl_rekam}} {{$row->jam_rekam}}</td>
                                     <td>{{$row->dokter->nama}}
                                         <br><strong>{{$row->poli}}</strong>
                                     </td>

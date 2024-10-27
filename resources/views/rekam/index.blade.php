@@ -43,7 +43,7 @@
                             @foreach ($rekams as $key=>$row)
                                 <tr>
                                     <td align="center">{{ $rekams->firstItem() + $key }}</td>
-                                <td>{{$row->no_rekam}}<br/>{{$row->tgl_rekam}}</td>
+                                <td>{{$row->no_rekam}}<br/>{{$row->tgl_rekam}} {{$row->jam_rekam}}</td>
                                 <td><a href="{{Route('rekam.detail',$row->pasien_id)}}">{{$row->pasien->nama}}</a></td>
                                 <td>{{$row->poli}}
                                     <br><strong>{{$row->dokter->nama}}</strong>
@@ -60,8 +60,6 @@
                                         <a href="#" class="btn btn-danger shadow btn-xs sharp delete" r-link="{{Route('rekam.delete',$row->id)}}"
                                          r-name="{{$row->pasien->nama}}" r-id="{{$row->id}}"><i class="fa fa-trash"></i></a>
                                         @endif
-
-                                       
                                     </div>
                                 </td>
                                 </tr>

@@ -129,19 +129,6 @@
                     <div class="card appointment-schedule">
                         <div class="card-header pb-0 border-0">
                             <h3 class="fs-20 text-black mb-0">Perawatan Hari ini</h3>
-                            <div class="dropdown ml-auto">
-                                <div class="btn-link p-2 bg-light" data-toggle="dropdown">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item text-black" href="javascript:;">Info</a>
-                                    <a class="dropdown-item text-black" href="javascript:;">Details</a>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -150,15 +137,15 @@
                                         <input type='text' class="form-control d-none" id='datetimepicker1' />
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-xxl-12  col-md-6 height415 dz-scroll" id="appointment-schedule">
+                                <div class="col-sm-12 height415 dz-scroll" id="appointment-schedule">
                                     @if ($query->rekam_day()->count() > 0)
                                             @foreach ($query->rekam_day() as $item)
                                             <div class="d-flex pb-3 border-bottom mb-3 align-items-end">
                                                 <div class="mr-auto">
                                                     <p class="text-black font-w600 mb-2"><a href="{{Route('rekam.detail',$item->pasien_id)}}">{{$item->pasien->nama}}</a></p>
                                                     <ul>
-                                                        <li><i class="las la-clock"></i>Time : {{$item->created_at->diffForHumans()}}</li>
-                                                        <li><i class="las la-clock"></i>Status : {!!$item->status_display()!!}</li>
+                                                        <li><i class="las la-clock"></i>Time : {{$item->jam_rekam}}</li>
+                                                        <li><i class="las la-clock"></i>Status : &nbsp {!!$item->status_display()!!}</li>
                                                         <li><i class="las la-user"></i>Keluhan : {{$item->keluhan}}</li>
                                                         <li><i class="las la-user"></i>Doktor : {{$item->dokter->nama}}</li>
                                                     </ul>

@@ -174,9 +174,56 @@ class DokterController extends Controller
         $data = Dokter::find($id);
         $jam = Jam::all();
         $hari = Hari::all();
+
         $libur = LiburDokter::where('dokter_id',$id)
-                ->whereDate('tanggal', '>', Carbon::today()->toDateString())
+                ->whereDate('tanggal', '>',date('Y-m-d'))
                 ->get();
-        return view('dokter.jadwal',compact('data','jam','hari','libur'));
+
+        $jadwal = JadwalDokter::where('dokter_id', $id)->get();
+        $newJadwal = array();
+
+        $x = 1;
+
+        foreach ($jadwal as $key => $value) {
+            $day = array_column($newJadwal, 'hari');
+            $found_key = array_search($value->hari, $day);
+            // print_r(json_encode($found_key));
+            if ($found_key === 0 || $found_key) {
+                $newJadwal[$found_key]['jam'][] = $value->jam;
+            } else {
+                $newJadwal[] = array(
+                    'hari' => $value->hari,
+                    'jam' => array($value->jam),
+                );
+
+            }
+        }
+
+        return view('dokter.jadwal',compact('data','jam','hari','newJadwal','libur'));
+    }
+
+    public function updatejadwal(Request $request, $id)
+    {
+        $req = $request->get('jam');
+        $newJadwal = [];
+        foreach ($req as $key => $value) {
+            foreach ($value as $keys => $item) {
+                $newJadwal[] = array(
+                    'hari' => $keys,
+                    'jam' => $item,
+                    'dokter_id' => $id,
+                );
+            }
+        }
+
+        foreach ($newJadwal as $key => $value) {
+            $input['hari'] = $value['hari'];
+            $input['jam'] = $value['jam'];
+            $input['dokter_id'] = $value['dokter_id'];
+            $jadwal = JadwalDokter::updateOrCreate(['hari'=>$value['hari'], 'jam'=>$value['jam'], 'dokter_id'=>$value['dokter_id']], $input);
+        }
+
+        return redirect()->route('dokter.jadwal', $id)->with('sukses','Selamat, jadwal anda sudah diperbaharui');
+
     }
 }

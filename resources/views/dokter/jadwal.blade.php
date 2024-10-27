@@ -7,20 +7,41 @@
                 <div class="basic-form">
                     <h2 class="text-black font-w600">Jadwal Dokter {{$data->nama}}</h2>
                     <br>
-                    <form action="" method="POST">
+                    <form action="{{Route('dokter.updatejadwal',$data->id)}}" method="POST">
                     {{ csrf_field() }}
                         @foreach ($hari as $item)
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">{{$item->hari}}</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name="jam[]" id="jam" multiple>
-                                        @foreach ($jam as $item)
-                                            <option value="{{$item->jam}}">{{$item->jam}}</option>
-                                        @endforeach
-                                    </select>
+                            @php
+                                $day = array_column($newJadwal, 'hari');
+                                $found_key = array_search($item->hari, $day);
+                            @endphp
+                            @if ($found_key === 0 || $found_key)
+                                <div class="form-group row">
+                                    <input type="text" class="form-control col-sm-2" value="{{$item->hari}}">
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="jam[] [{{$item->hari}}]" id="jam" multiple>
+                                            @foreach ($jam as $itemJam)
+                                                <option value="{{$itemJam->jam}}" @if (in_array($itemJam->jam, $newJadwal[$found_key]['jam'])) selected @endif >{{$itemJam->jam}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                @else
+                                <div class="form-group row">
+                                    <input type="text" class="form-control col-sm-2" value="{{$item->hari}}">
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="jam[][{{$item->hari}}]" id="jam" multiple>
+                                            @foreach ($jam as $itemJam)
+                                                <option value="{{$itemJam->jam}}">{{$itemJam->jam}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
                         @endforeach
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">SIMPAN</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -33,6 +54,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="basic-form">
+                    <!-- ADD FORM LIBUR DOKTER -->
                     <h2 class="text-black font-w600">Jadwal Libur Dokter {{$data->nama}}</h2>
                     <br>
                     <form action="" method="POST">

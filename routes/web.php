@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/dokter/{id}/delete', [DokterController::class, 'delete'])->name('dokter.delete');
     Route::post('/dokter/{id}/gantipassword', [DokterController::class, 'updatepassword'])->name('dokter.gantipassword');
     Route::get('/dokter/jadwal/{id}', [DokterController::class, 'jadwal'])->name('dokter.jadwal');
+    Route::post('/dokter/jadwal/{id}/update', [DokterController::class, 'updatejadwal'])->name('dokter.updatejadwal');
 
     Route::post('/gantipassword/{id}', [AuthController::class, 'updatepassword'])->name('gantipassword');
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas');
