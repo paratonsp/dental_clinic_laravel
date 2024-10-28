@@ -7,7 +7,7 @@
             <h2 class="text-black font-w600">Dashboard</h2>
         </div>
         <div>
-            <a href="{{Route('rekam.status',[$rekamLatest->id,2])}}" class="btn btn-primary">
+            <a href="{{Route('rekam.addfrompasien', $pasien->id)}}" class="btn btn-primary">
                 Buat Janji Dokter <span class="btn-icon-right"><i class="fa fa-clock-o"></i></span>
             </a>
         </div>

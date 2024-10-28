@@ -53,6 +53,13 @@ class RekamController extends Controller
         return view('rekam.add',compact('poli'));
     }
 
+    public function addfrompasien(Request $request, $id)
+    {
+        $poli = Poli::all();
+        $pasien = Pasien::find($id);
+        return view('rekam.addfrompasien',compact('poli','pasien'));
+    }
+
     public function edit(Request $request,$id)
     {
         $poli = Poli::all();
@@ -89,6 +96,42 @@ class RekamController extends Controller
     }
 
     function store(Request $request){
+        $this->validate($request,[
+            'tgl_rekam' => 'required',
+            'jam_rekam' => 'required',
+            'pasien_id' => 'required',
+            'pasien_nama' => 'required',
+            'keluhan' => 'required',
+            'poli' => 'required',
+            'cara_bayar' => 'required',
+            'dokter_id' => 'required'
+        ]);
+        $pasien = Pasien::where('id',$request->pasien_id)->first();
+        if(!$pasien){
+            return redirect()->back()->withInput($request->input())
+                                ->withErrors(['pasien_id' => 'Data Pasien Tidak Ditemukan']);
+        }
+        $rekam_ada = Rekam::where('pasien_id',$request->pasien_id)
+                            ->whereIn('status',[1,2,3,4])
+                            ->first();
+        if($rekam_ada){
+            return redirect()->back()->withInput($request->input())
+                                ->withErrors(['pasien_id' => 'Pasien ini masih belum selesai periksa,
+                                 harap selesaikan pemeriksaan sebelumnya']);
+        }
+
+        $request->merge([
+            'no_rekam' => "REG#".date('Ymd').$request->pasien_id,
+            'petugas_id' => auth()->user()->id
+        ]);
+        Rekam::create($request->all());
+        return redirect()->route('rekam.detail',$request->pasien_id)
+                        ->with('sukses','Pendaftaran Berhasil,
+                         Silakan lakukan pemeriksaan dan teruskan ke dokter terkait');
+
+    }
+
+    function storefrompasien(Request $request){
         $this->validate($request,[
             'tgl_rekam' => 'required',
             'jam_rekam' => 'required',

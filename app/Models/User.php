@@ -10,7 +10,7 @@ class User extends Model
     use HasFactory;
     protected $table = "users";
     protected $fillable = [
-        'name', 'email', 'password','phone','email','role','status'
+        'name', 'email', 'password','phone','email','role','status','pasien_id'
     ];
 
     protected $hidden = [

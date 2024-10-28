@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     protected $fillable = [
-        'name', 'email', 'password','phone','email','role','status'
+        'name', 'email', 'password','phone','email','role','status','pasien_id'
     ];
 
     function status_display(){

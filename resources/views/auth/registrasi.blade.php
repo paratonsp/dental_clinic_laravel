@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="id" class="h-100">
 
 <head>
     <meta charset="utf-8">
@@ -27,11 +27,37 @@
                 
 									</div>
                                     <h3 class="text-center mb-4"><strong>Registrasi Pasien</strong></h3>
-                                    <form action="{{Route('login.auth')}}" method="POST">
-                                        {{ csrf_field() }}
+                                    <form action="{{Route('regist.auth')}}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Nama</strong></label>
+                                            <input type="text" class="form-control"  placeholder="Nama" value="" required name="nama" id="nama">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Kategori</strong></label>
+                                            <select name="code" class="form-control" id="code">
+                                                <option value="D">Dewasa</option>
+                                                <option value="A">Anak</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <label class="mb-1"><strong>No RM</strong></label>
+                                            <input type="text" class="form-control" name="no_rm" required value="" id="no_rm">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1"><strong>Jenis Kelamin</strong></label>
+                                            <div class="form-check">
+                                                <input type="radio" name="jk" class="form-check-input" value="Laki-Laki">
+                                                <label class="form-check-label">Laki-Laki</label>     
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" name="jk" class="form-check-input"value="Perempuan">
+                                                <label class="form-check-label">Perempuan</label>   
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>No.Telepon</strong></label>
-                                            <input type="tel" class="form-control" placeholder="phone" value="" required name="phone">
+                                            <input type="tel" class="form-control" placeholder="No.Telepon" value="" required name="phone">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
@@ -46,7 +72,6 @@
                                             <a href="{{Route('login')}}">Sudah punya akun?</a>
                                         </div>
                                     </form>
-                                   
                                 </div>
                             </div>
                         </div>
@@ -55,8 +80,6 @@
             </div>
         </div>
     </div>
-
-
     <script src="{{asset('vendor/global/global.min.js')}}"></script>
 	<script src="{{asset('vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('js/custom.min.js')}}"></script>
@@ -71,7 +94,5 @@
             toastr.error("{{Session::get('gagal')}}", "Gagal",{timeOut: 5000})
         @endif
     </script>
-
 </body>
-
 </html>

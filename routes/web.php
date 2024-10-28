@@ -20,6 +20,7 @@ use App\Http\Controllers\TindakanController;
 Route::get('/', [AuthController::class, 'page_login'])->name('login');
 Route::get('/registrasi', [AuthController::class, 'registration'])->name('registration');
 Route::post('/login', [AuthController::class, 'auth'])->name('login.auth');
+Route::post('/regist', [AuthController::class, 'regist'])->name('regist.auth');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('test', function () {
@@ -94,9 +95,11 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/rekam', [RekamController::class, 'index'])->name('rekam');
     Route::get('/rekam/add', [RekamController::class, 'add'])->name('rekam.add');
+    Route::get('/rekam/addfrompasien/{id}', [RekamController::class, 'addfrompasien'])->name('rekam.addfrompasien');
     Route::get('/rekam/{id}/edit', [RekamController::class, 'edit'])->name('rekam.edit');
 
-    Route::post('/rekam/pasie/store', [RekamController::class, 'store'])->name('rekam.store');
+    Route::post('/rekam/pasien/store', [RekamController::class, 'store'])->name('rekam.store');
+    Route::post('/rekam/pasien/storefrompasien', [RekamController::class, 'storefrompasien'])->name('rekam.storefrompasien');
     Route::get('/rekam/pasien/{id}', [RekamController::class, 'detail'])->name('rekam.detail');
 
     Route::get('/rekam/{id}/delete', [RekamController::class, 'delete'])->name('rekam.delete');

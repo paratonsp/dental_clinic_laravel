@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Pasien;
+
 
 class AuthController extends Controller
 {
@@ -30,12 +34,60 @@ class AuthController extends Controller
 
     public function auth(Request $request)
     {
+
         $credentials = $request->only('phone', 'password');
+
         if(Auth::attempt($credentials)){
     		return redirect('/dashboard')->with('sukses','Selamat, Anda berhasil masuk aplikasi');
     	}else{
     		return redirect('/')->with('gagal','mohon masukkan password dengan benar');
     	}
+    }
+
+    public function regist(Request $request)
+    {
+        $this->validate($request,[
+            'nama' => 'required',
+            'phone' => 'required',
+            'jk' => 'required',
+            'no_rm' => 'required|unique:pasien',
+            'password' => 'required',
+        ]);
+
+        try {
+            $pasien = Pasien::create([
+                'nama' => $request->nama,
+                'no_hp' => $request->phone,
+                'cara_bayar' => 'Umum/Mandiri',
+                'jk' => $request->jk,
+                'no_rm' => $request->no_rm,
+            ]);
+
+            $user = User::create([
+                'name' => $request->nama,
+                'phone' => $request->phone,
+                'password' => bcrypt($request->password),
+                'role' => 5,
+                'pasien_id' => $pasien->id,
+                'status' => 1
+            ]);
+            
+
+
+            DB::commit();
+            $credentials = $request->only('phone', 'password');
+            if (Auth::attempt($credentials)) {
+                return redirect('/dashboard')->with('sukses','Selamat, Anda berhasil registrasi');
+            } else {
+                return redirect('/')->with('gagal','mohon masuk sekali lagi');
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            DB::rollBack();
+            return redirect('/registrasi')->with('gagal','mohon masukkan data dengan benar');
+        }
+        DB::rollBack();
+        return redirect('/registrasi')->with('gagal','mohon masukkan data dengan benar');
     }
 
     public function logout()
