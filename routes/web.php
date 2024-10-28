@@ -18,6 +18,7 @@ use App\Http\Controllers\RekamPemeriksaanController;
 use App\Http\Controllers\TindakanController;
 
 Route::get('/', [AuthController::class, 'page_login'])->name('login');
+Route::get('/registrasi', [AuthController::class, 'registration'])->name('registration');
 Route::post('/login', [AuthController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

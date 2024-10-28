@@ -19,6 +19,15 @@ class AuthController extends Controller
         }
     }
 
+    public function registration()
+    {
+        if (!Auth::check()) {
+            return view('auth.registrasi');
+        }else{
+           return redirect('/dashboard');
+        }
+    }
+
     public function auth(Request $request)
     {
         $credentials = $request->only('phone', 'password');

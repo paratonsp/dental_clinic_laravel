@@ -31,6 +31,9 @@ class User extends Authenticatable
             case 4:
                 return 'Apotek';
                 break;
+            case 5:
+                return 'Pasien';
+                break;
             default:
                 return '';
                 break;

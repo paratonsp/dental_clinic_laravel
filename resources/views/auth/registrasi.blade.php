@@ -26,7 +26,7 @@
                                         <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt="" style="max-width: 200px;"> 
                 
 									</div>
-                                    <h3 class="text-center mb-4"><strong>Masuk</strong></h3>
+                                    <h3 class="text-center mb-4"><strong>Registrasi Pasien</strong></h3>
                                     <form action="{{Route('login.auth')}}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-group">
@@ -39,11 +39,11 @@
                                         </div>
                                         <br>
                                         <div class="text-center">
-                                            <button type="submit" class="btn text-black btn-primary form-control">Masuk</button>
+                                            <button type="submit" class="btn text-black btn-primary form-control">Registrasi</button>
                                         </div>
                                         <br>
                                         <div class="text-center">
-                                            <a href="{{Route('registration')}}">Pasien baru?</a>
+                                            <a href="{{Route('login')}}">Sudah punya akun?</a>
                                         </div>
                                     </form>
                                    

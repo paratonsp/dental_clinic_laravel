@@ -335,9 +335,7 @@
                             </tbody>
                             
                         </table>
-                        <div class="dataTables_info" id="example_info" role="status"
-                        aria-live="polite">Showing {{$rekams->firstItem()}} to {{$rekams->perPage() * $rekams->currentPage()}} of {{$rekams->total()}} entries</div>
-   
+                        <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing {{$rekams->firstItem()}} to {{$rekams->perPage() * $rekams->currentPage()}} of {{$rekams->total()}} entries</div>
                        {{ $rekams->appends(request()->except('page'))->links() }}
                     </div>
                 </div>

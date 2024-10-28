@@ -82,7 +82,6 @@ class RekamController extends Controller
                     
         if($rekamLatest){
            auth()->user()->notifications->where('data.no_rekam',$rekamLatest->no_rekam)->markAsRead();
-        //   dd($data);
         }
         $poli = Poli::where('status',1)->get();
 
