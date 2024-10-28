@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dental Clinic</title>
+    <title>Molar Dental</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
 	<link rel="stylesheet" href="{{asset('vendor/chartist/css/chartist.min.css')}}">
@@ -39,11 +39,10 @@
      
         <div class="nav-header">
             <a href="#" class="brand-logo">
-                {{-- <h3 class="brand-title">Dental Clinic</h3> --}}
-                {{-- <h2 class="logo-compact">Dental Clinic</h2> --}}
-                 <img class="logo-abbr" src="{{asset('images/logo.png')}}" alt="">
-                 <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt=""> 
-                <img class="brand-title" src="{{asset('images/logo-text.png')}}" alt="">  
+                {{-- <h3 class="brand-title">Molar Dental</h3> --}}
+                {{-- <h2 class="logo-compact">Molar Dental</h2> --}}
+                 <img class="logo-abbr" src="{{asset('images/molar-logo.png')}}" alt="">
+                 <img class="logo-compact" src="{{asset('images/molar-logo.png')}}" alt=""> 
             </a>
 
             <div class="nav-control">

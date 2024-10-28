@@ -22,8 +22,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form" style="background-color: lightskyblue;">
 									<div class="text-center mb-3">
-                                        <img class="logo-abbr" src="{{asset('images/transparent-icon.png')}}" alt="" style="max-width: 100px;">
-                                        <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt="" style="max-width: 200px;"> 
+                                        <img class="logo-compact" src="{{asset('images/molar-logo.png')}}" alt="" style="max-width: 200px;"> 
                 
 									</div>
                                     <h3 class="text-center mb-4"><strong>Registrasi Pasien</strong></h3>

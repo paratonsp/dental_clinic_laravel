@@ -58,7 +58,7 @@
         </ul>
         
         <div class="copyright">
-            <p><strong>Dental Clinic</strong> © All Rights Reserved</p>
+            <p><strong>Molar Dental</strong> © All Rights Reserved</p>
         </div>
     </div>
 </div>

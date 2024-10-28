@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dental Clinic</title>
+    <title>Molar Dental</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -22,8 +22,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form" style="background-color: lightskyblue;">
 									<div class="text-center mb-3">
-                                        <img class="logo-abbr" src="{{asset('images/transparent-icon.png')}}" alt="" style="max-width: 100px;">
-                                        <img class="logo-compact" src="{{asset('images/logo-text.png')}}" alt="" style="max-width: 200px;"> 
+                                        <img class="logo-compact" src="{{asset('images/molar-logo.png')}}" alt="" style="max-width: 200px;"> 
                 
 									</div>
                                     <h3 class="text-center mb-4"><strong>Masuk</strong></h3>
