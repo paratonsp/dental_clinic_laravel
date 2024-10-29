@@ -1,7 +1,7 @@
 @extends('layout.apps')
 @section('content')
 <div class="mr-auto">
-    <h2 class="text-black font-w600">Petugas</h2>
+    <h2 class="text-black font-w600">Pengguna</h2>
 </div>
     
 
@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Petugas Baru</h5>
+                <h5 class="modal-title">Pengguna Baru</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                 </button>
             </div>
@@ -72,7 +72,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group col-lg-6" style="float: left">
-                    <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Petugas</a>
+                    <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+ Tambah Pengguna</a>
 
                 </div>
                 <div class="form-group col-lg-6" style="float: right">
@@ -166,7 +166,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Petugas</h5>
+                                                            <h5 class="modal-title">Edit Pengguna</h5>
                                                             <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                             </button>
                                                         </div>

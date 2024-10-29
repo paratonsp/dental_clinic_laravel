@@ -46,7 +46,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{Route('tindakan')}}">Tindakan</a></li>
-                    <li><a href="{{Route('petugas')}}">Petugas</a></li>
+                    <li><a href="{{Route('petugas')}}">Pengguna</a></li>
                     <li><a href="{{Route('poli')}}">Poli</a></li>
                     <li><a href="{{Route('dokter')}}">Dokter</a></li>
                     <li><a href="{{Route('icd')}}">ICD</a></li>
