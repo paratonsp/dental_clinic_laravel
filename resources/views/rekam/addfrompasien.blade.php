@@ -114,28 +114,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
-                                <div class="alert alert-warning left-icon-big alert-dismissible fade show">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                                    </button>
-                                    <div class="media">
-                                        <div class="alert-left-icon-big">
-                                            <span><i class="mdi mdi-help-circle-outline"></i></span>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="mb-0"><i>Jika tidak ada nama pasien / bpjs, silahkan lakukan tambah data dulu.</i>
-                                                <a href="{{Route('pasien.add')}}">  klik disini !!</a>
-                                                </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Anemnesa / <br>Keluhan*</label>
+                            <label class="col-sm-2 col-form-label">Anemnesa /<br>Keluhan*</label>
                             <div class="col-sm-10">
                                 <textarea name="keluhan" required class="form-control"
                                 rows="4">{{old('keluhan')}}</textarea>
