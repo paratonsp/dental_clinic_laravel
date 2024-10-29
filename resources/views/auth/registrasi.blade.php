@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Molar Dental</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/molar-logo.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/molar-circle.png')}}">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('vendor/toastr/css/toastr.min.css')}}">
 </head>
