@@ -60,7 +60,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control"  placeholder="password" value="" required name="password">
+                                            <input type="password" class="form-control"  placeholder="Password" value="" required name="password">
                                         </div>
                                         <br>
                                         <div class="text-center">
